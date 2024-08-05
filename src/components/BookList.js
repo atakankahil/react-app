@@ -37,6 +37,11 @@ const BookList = () => {
           <tr>
             <th>Title</th>
             <th>Author</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Year</th>
+            <th>QrCode</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -45,6 +50,11 @@ const BookList = () => {
             <tr key={book.id}>
               <td>{book.title}</td>
               <td>{book.author}</td>
+              <td>{book.description}</td>
+              <td>{book.price}</td>
+              <td>{book.genre}</td>
+              <td>{book.year}</td>
+              <img src={`data:image/png;base64,${book.base64QrCode}`} />
               <td>
                 <button onClick={() => deleteBook(book.id)}>Delete</button>
                 <Link to={`/edit/${book.id}`}>

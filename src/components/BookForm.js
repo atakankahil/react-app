@@ -62,6 +62,43 @@ const BookForm = () => {
             onChange={handleChange}
           />
         </div>
+        <div>
+          <label>Description:</label>
+          <input
+            type="text"
+            name="description"
+            value={book.description}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Genre:</label>
+          <input
+            type="text"
+            name="genre"
+            value={book.genre}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Year:</label>
+          <input
+            type="int"
+            name="year"
+            value={book.year}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Price:</label>
+          <input
+            type="double"
+            name="price"
+            value={book.price}
+            onChange={handleChange}
+          />
+        </div>
+      
         <button type="submit">Save</button>
       </form>
     </div>
