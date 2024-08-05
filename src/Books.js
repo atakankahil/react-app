@@ -4,7 +4,7 @@ const Books = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch('/books')
+        fetch('/books/v2')
             .then(response => response.json())
             .then(data => setBooks(data))
             .catch(error => console.error('Error fetching books:', error));
