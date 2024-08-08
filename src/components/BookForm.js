@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import BookService from '../BookService';
 import { useParams, useNavigate } from 'react-router-dom';
+import './styles.css'; // Import the styles.css file
 
 const BookForm = () => {
-  const [book, setBook] = useState({ title: '', author: '' });
+  const [book, setBook] = useState({ title: '', author: '', description: '', genre: '', year: '', price: '' , quantity: ''});
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ const BookForm = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>{id ? 'Edit Book' : 'Add Book'}</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -83,7 +84,7 @@ const BookForm = () => {
         <div>
           <label>Year:</label>
           <input
-            type="int"
+            type="number"
             name="year"
             value={book.year}
             onChange={handleChange}
@@ -92,13 +93,22 @@ const BookForm = () => {
         <div>
           <label>Price:</label>
           <input
-            type="double"
+            type="number"
+            step="0.01"
             name="price"
             value={book.price}
             onChange={handleChange}
           />
         </div>
-      
+        <div>
+          <label>Quantity:</label>
+          <input
+            type="number"
+            name="quantity"
+            value={book.quantity}
+            onChange={handleChange}
+          />
+        </div>
         <button type="submit">Save</button>
       </form>
     </div>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import BookList from './components/BookList';
 import BookForm from './components/BookForm';
+import './components/styles.css'; // Import the styles.css file
 
 function App() {
   return (
@@ -11,10 +12,10 @@ function App() {
           <nav>
             <ul>
               <li>
-                <Link to="/">Books</Link>
+                <NavLink to="/" exact activeClassName="active">Books</NavLink>
               </li>
               <li>
-                <Link to="/add">Add Book</Link>
+                <NavLink to="/add" activeClassName="active">Add Book</NavLink>
               </li>
             </ul>
           </nav>
