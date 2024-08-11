@@ -39,6 +39,7 @@ const BookList = () => {
             <p><strong>Price:</strong> ${book.price}</p>
             <p><strong>Genre:</strong> {book.genre}</p>
             <p><strong>Year:</strong> {book.year}</p>
+            <p><strong>Quantity:</strong> {book.quantity}</p>
             <img src={`data:image/png;base64,${book.base64QrCode}`} alt="QR Code" />
             <div className="actions">
               <button onClick={() => deleteBook(book.id)}>Delete</button>

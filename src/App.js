@@ -2,9 +2,18 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import BookList from './components/BookList';
 import BookForm from './components/BookForm';
-import './components/styles.css'; // Import the styles.css file
+import Register from './components/Register';
+import Login from './components/Login';
+import BookService from './BookService';
+import './components/styles.css';
 
 function App() {
+  const username = localStorage.getItem('username'); // Retrieve the username
+
+  const handleLogout = () => {
+    BookService.logout();
+  };
+
   return (
     <Router>
       <div className="App">
@@ -12,11 +21,35 @@ function App() {
           <nav>
             <ul>
               <li>
-                <NavLink to="/" exact activeClassName="active">Books</NavLink>
+                <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                  Books
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/add" activeClassName="active">Add Book</NavLink>
+                <NavLink to="/add" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                  Add Book
+                </NavLink>
               </li>
+              <li>
+                <NavLink to="/register" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                  Register
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                  Login
+                </NavLink>
+              </li>
+              {username && (
+                <>
+                  <li style={{ marginLeft: 'auto' }}>
+                    <span>Welcome, {username}</span>
+                  </li>
+                  <li>
+                    <button onClick={handleLogout}>Logout</button>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </header>
@@ -25,6 +58,8 @@ function App() {
             <Route exact path="/" element={<BookList />} />
             <Route exact path="/add" element={<BookForm />} />
             <Route exact path="/edit/:id" element={<BookForm />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/login" element={<Login />} />
           </Routes>
         </main>
       </div>
