@@ -49,6 +49,26 @@ class BookService {
     }
   }
 
+  // New method for renting a book
+  async rentBook(id) {
+    try {
+      console.log("Renting book id:", id, "with headers:", this.authHeader());
+      return await axios.post(`${API_URL}/${id}/rent`, null, { headers: this.authHeader() });
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  // New method for returning a book
+  async returnBook(id) {
+    try {
+      console.log("Returning book id:", id, "with headers:", this.authHeader());
+      return await axios.post(`${API_URL}/${id}/return`, null, { headers: this.authHeader() });
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
   async refreshToken() {
     const refreshToken = localStorage.getItem('refreshToken');
     if (!refreshToken) return false;

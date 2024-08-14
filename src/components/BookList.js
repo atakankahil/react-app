@@ -33,7 +33,9 @@ const BookList = () => {
       <div className="book-grid">
         {books.map((book) => (
           <div className="book-card" key={book.id}>
-            <h3>{book.title}</h3>
+            <Link to={`/books/${book.id}`}>
+              <h3>{book.title}</h3>
+            </Link>
             <p><strong>Author:</strong> {book.author}</p>
             <p><strong>Description:</strong> {book.description}</p>
             <p><strong>Price:</strong> ${book.price}</p>

@@ -4,14 +4,16 @@ import BookList from './components/BookList';
 import BookForm from './components/BookForm';
 import Register from './components/Register';
 import Login from './components/Login';
-import BookService from './BookService';
-import './components/styles.css';
+import BookDetail from './components/BookDetail'; // Import the BookDetail component
+import BookService from './BookService'; // Import the BookService
+import './components/styles.css'; // Import the styles
 
 function App() {
   const username = localStorage.getItem('username'); // Retrieve the username
 
   const handleLogout = () => {
     BookService.logout();
+    window.location.href = '/login'; // Ensure the page refreshes to reflect logout
   };
 
   return (
@@ -60,6 +62,7 @@ function App() {
             <Route exact path="/edit/:id" element={<BookForm />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/login" element={<Login />} />
+            <Route exact path="/books/:id" element={<BookDetail />} /> {/* Route to BookDetail */}
           </Routes>
         </main>
       </div>

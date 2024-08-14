@@ -1,5 +1,3 @@
-/* Existing styles */
-
 body {
   font-family: Arial, sans-serif;
 }
@@ -14,6 +12,7 @@ h1, h2 {
   padding: 20px;
 }
 
+/* Book Grid and Cards */
 .book-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -28,11 +27,19 @@ h1, h2 {
   background-color: #fff;
   text-align: center;
   padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .book-card img {
   max-width: 100%;
   height: auto;
+  border-radius: 4px;
+  margin-bottom: 15px;
 }
 
 .book-card h3 {
@@ -70,7 +77,6 @@ h1, h2 {
 }
 
 /* Navigation Styles */
-
 nav {
   background-color: #333;
   padding: 10px;
@@ -106,7 +112,6 @@ nav ul li a.active {
 }
 
 /* Form Styles */
-
 form {
   max-width: 600px;
   margin: 0 auto;
@@ -152,6 +157,7 @@ button:hover {
   background-color: #45a049;
 }
 
+/* User Info and Logout Button */
 .user-info {
   display: flex;
   align-items: center;
@@ -175,3 +181,34 @@ button:hover {
 .logout-button:hover {
   background-color: #d32f2f;
 }
+
+/* Book Details */
+.book-details {
+  max-width: 600px;
+  margin: 40px auto; /* Center the book details on the page */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.book-details p {
+  margin: 10px 0;
+  color: #555;
+  font-size: 16px;
+}
+
+.book-details p strong {
+  color: #333;
+}
+
+.book-details img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
