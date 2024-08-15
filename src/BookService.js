@@ -49,21 +49,28 @@ class BookService {
     }
   }
 
-  // New method for renting a book
-  async rentBook(id) {
+  async getRentedBooks() {
     try {
-      console.log("Renting book id:", id, "with headers:", this.authHeader());
-      return await axios.post(`${API_URL}/${id}/rent`, null, { headers: this.authHeader() });
+      console.log("Fetching rented books with headers:", this.authHeader());
+      return await axios.get(`${API_URL}/rented`, { headers: this.authHeader() });
     } catch (error) {
       this.handleError(error);
     }
   }
 
-  // New method for returning a book
+  async rentBook(id) {
+    try {
+      console.log("Renting book id:", id, "with headers:", this.authHeader());
+      return await axios.put(`${API_URL}/rent/${id}`, {}, { headers: this.authHeader() });
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
   async returnBook(id) {
     try {
       console.log("Returning book id:", id, "with headers:", this.authHeader());
-      return await axios.post(`${API_URL}/${id}/return`, null, { headers: this.authHeader() });
+      return await axios.put(`${API_URL}/return/${id}`, {}, { headers: this.authHeader() });
     } catch (error) {
       this.handleError(error);
     }

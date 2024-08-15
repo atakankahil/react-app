@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './styles.css'; // Import the styles.css file
 
 const BookForm = () => {
-  const [book, setBook] = useState({ title: '', author: '', description: '', genre: '', year: '', price: '' , quantity: ''});
+  const [book, setBook] = useState({ title: '', author: '', description: '', genre: '', year: '', price: '', quantity: '', section: '', shelf: '' });
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -106,6 +106,24 @@ const BookForm = () => {
             type="number"
             name="quantity"
             value={book.quantity}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Section:</label>
+          <input
+            type="text"
+            name="section"
+            value={book.section}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Shelf:</label>
+          <input
+            type="number"
+            name="shelf"
+            value={book.shelf}
             onChange={handleChange}
           />
         </div>

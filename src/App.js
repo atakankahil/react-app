@@ -4,9 +4,10 @@ import BookList from './components/BookList';
 import BookForm from './components/BookForm';
 import Register from './components/Register';
 import Login from './components/Login';
-import BookDetail from './components/BookDetail'; // Import the BookDetail component
-import BookService from './BookService'; // Import the BookService
-import './components/styles.css'; // Import the styles
+import RentedBooks from './components/RentedBooks';
+import BookDetail from './components/BookDetail';
+import BookService from './BookService';
+import './components/styles.css';
 
 function App() {
   const username = localStorage.getItem('username'); // Retrieve the username
@@ -42,6 +43,11 @@ function App() {
                   Login
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/rented" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                  Rented Books
+                </NavLink>
+              </li>
               {username && (
                 <>
                   <li style={{ marginLeft: 'auto' }}>
@@ -57,12 +63,13 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route exact path="/" element={<BookList />} />
-            <Route exact path="/add" element={<BookForm />} />
-            <Route exact path="/edit/:id" element={<BookForm />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/books/:id" element={<BookDetail />} /> {/* Route to BookDetail */}
+            <Route path="/" element={<BookList />} />
+            <Route path="/add" element={<BookForm />} />
+            <Route path="/edit/:id" element={<BookForm />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/books/:id" element={<BookDetail />} />
+            <Route path="/rented" element={<RentedBooks />} />
           </Routes>
         </main>
       </div>

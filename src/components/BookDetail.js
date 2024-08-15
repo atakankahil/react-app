@@ -61,6 +61,8 @@ const BookDetail = () => {
           <p><strong>Description:</strong> {book.description}</p>
           <p><strong>Price:</strong> ${book.price}</p>
           <p><strong>Quantity:</strong> {book.quantity}</p>
+          <p><strong>Section:</strong> {book.section}</p> {/* Display section */}
+          <p><strong>Shelf:</strong> {book.shelf}</p>     {/* Display shelf */}
           <p><strong>Rented:</strong> {book.rented ? 'Yes' : 'No'}</p>
           <img src={`data:image/png;base64,${book.base64QrCode}`} alt="QR Code" />
           <div className="actions">
