@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import BookList from './components/BookList';
 import BookForm from './components/BookForm';
@@ -6,15 +6,23 @@ import Register from './components/Register';
 import Login from './components/Login';
 import RentedBooks from './components/RentedBooks';
 import BookDetail from './components/BookDetail';
+import UserList from './components/UserList';
 import BookService from './BookService';
 import './components/styles.css';
 
 function App() {
-  const username = localStorage.getItem('username'); // Retrieve the username
+  const username = localStorage.getItem('username');
+  const userRole = localStorage.getItem('userRole');
+
+  useEffect(() => {
+    // Log userRole and username to the console
+    console.log('Username:', username);
+    console.log('User Role:', userRole);
+  }, [username, userRole]);
 
   const handleLogout = () => {
     BookService.logout();
-    window.location.href = '/login'; // Ensure the page refreshes to reflect logout
+    window.location.href = '/login';
   };
 
   return (
@@ -48,14 +56,19 @@ function App() {
                   Rented Books
                 </NavLink>
               </li>
+              {userRole === 'ADMIN' && (
+                <li>
+                  <NavLink to="/users" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                    Users
+                  </NavLink>
+                </li>
+              )}
               {username && (
                 <>
-                  <li style={{ marginLeft: 'auto' }}>
-                    <span>Welcome, {username}</span>
-                  </li>
-                  <li>
-                    <button onClick={handleLogout}>Logout</button>
-                  </li>
+                <li style={{ marginLeft: 'auto', display: 'flex', alignItems:       'center', gap: '20px' }}>
+                  <span className="user-info-modern">Welcome, {username}</span>
+                  <button onClick={handleLogout} className="logout-button-modern">Logout</button>
+                </li>
                 </>
               )}
             </ul>
@@ -70,6 +83,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/books/:id" element={<BookDetail />} />
             <Route path="/rented" element={<RentedBooks />} />
+            <Route path="/users" element={<UserList />} /> {/* Add this route */}
           </Routes>
         </main>
       </div>

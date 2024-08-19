@@ -158,28 +158,39 @@ button:hover {
 }
 
 /* User Info and Logout Button */
-.user-info {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+.user-info-modern {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #2c3e50; /* Dark blue-gray */
+  padding: 10px 20px;
+  border-radius: 30px; /* Full-rounded edges */
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.user-info span {
-  margin-right: 15px;
-  color: white;
+.user-info-modern:hover {
+  background-color: #34495e; /* Slightly lighter blue-gray on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
 }
 
-.logout-button {
-  background-color: #f44336;
+.logout-button-modern {
+  background-color: #e74c3c; /* Vibrant red */
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 30px; /* Full-rounded edges */
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.logout-button:hover {
-  background-color: #d32f2f;
+.logout-button-modern:hover {
+  background-color: #c0392b; /* Slightly darker red on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
 }
 
 /* Book Details */
@@ -212,3 +223,101 @@ button:hover {
   margin-top: 20px;
 }
 
+/* User List Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+table th {
+  background-color: #4CAF50;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #e0e0e0;
+}
+
+table td {
+  border-bottom: 1px solid #ddd;
+}
+
+table td:first-child {
+  font-weight: bold;
+}
+
+table button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+table button:first-child {
+  background-color: #4CAF50;
+  color: white;
+}
+
+table button:first-child:hover {
+  background-color: #45a049;
+}
+
+table button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+table button:last-child:hover {
+  background-color: #e53935;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  table th, table td {
+    padding: 10px;
+  }
+
+  table button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Username Input Styling */
+table input[type="text"] {
+  width: 100%;
+  padding: 6px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Button Group Styling */
+table td button {
+  margin: 5px 3px;
+  padding: 8px 12px;
+}

@@ -10,10 +10,19 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      // Authenticate user
       const response = await axios.post('http://localhost:8080/auth/login', { username, password });
       localStorage.setItem('accessToken', response.data.accessToken);
       localStorage.setItem('refreshToken', response.data.refreshToken);
-      localStorage.setItem('username', username); // Store the username
+      localStorage.setItem('username', username);
+
+      // Fetch user details to store the role
+      const userDetailsResponse = await axios.get('http://localhost:8080/auth/me', {
+        headers: { Authorization: 'Bearer ' + response.data.accessToken },
+      });
+      localStorage.setItem('userRole', userDetailsResponse.data.userRole);
+
+      // Navigate to the home page
       navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
