@@ -15,7 +15,6 @@ function App() {
   const userRole = localStorage.getItem('userRole');
 
   useEffect(() => {
-    // Log userRole and username to the console
     console.log('Username:', username);
     console.log('User Role:', userRole);
   }, [username, userRole]);
@@ -51,25 +50,25 @@ function App() {
                   Login
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/rented" className={({ isActive }) => (isActive ? 'active' : undefined)}>
-                  Rented Books
-                </NavLink>
-              </li>
               {userRole === 'ADMIN' && (
-                <li>
-                  <NavLink to="/users" className={({ isActive }) => (isActive ? 'active' : undefined)}>
-                    Users
-                  </NavLink>
-                </li>
+                <>
+                  <li>
+                    <NavLink to="/rented" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                      Rented Books
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/users" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                      Users
+                    </NavLink>
+                  </li>
+                </>
               )}
               {username && (
-                <>
-                <li style={{ marginLeft: 'auto', display: 'flex', alignItems:       'center', gap: '20px' }}>
+                <li style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '20px' }}>
                   <span className="user-info-modern">Welcome, {username}</span>
                   <button onClick={handleLogout} className="logout-button-modern">Logout</button>
                 </li>
-                </>
               )}
             </ul>
           </nav>
@@ -82,8 +81,12 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books/:id" element={<BookDetail />} />
-            <Route path="/rented" element={<RentedBooks />} />
-            <Route path="/users" element={<UserList />} /> {/* Add this route */}
+            {userRole === 'ADMIN' && (
+              <>
+                <Route path="/rented" element={<RentedBooks />} />
+                <Route path="/users" element={<UserList />} />
+              </>
+            )}
           </Routes>
         </main>
       </div>
